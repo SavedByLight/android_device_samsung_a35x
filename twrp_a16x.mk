@@ -12,6 +12,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit some common twrp stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
+# Enable project quotas and casefolding for emulated storage without sdcardfs
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
 # Inherit from a16x device
 $(call inherit-product, device/samsung/a16x/device.mk)
 
@@ -20,6 +23,13 @@ PRODUCT_NAME := twrp_a16x
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-A166B
 PRODUCT_MANUFACTURER := samsung
+
+
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/samsung/a16x/recovery/root,recovery/root)
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 

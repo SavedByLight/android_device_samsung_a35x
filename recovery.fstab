@@ -1,32 +1,67 @@
-/system             erofs     system                                flags=display=system;logical
-/system             f2fs      system                                flags=display=system;logical
-/system             ext4      system                                flags=display=system;logical
-/vendor             erofs     vendor                                flags=display=vendor;logical
-/product            erofs     product                               flags=display=product;logical
-/odm                erofs     odm                                   flags=display=odm;logical
-/boot               emmc      /dev/block/by-name/boot               flags=display=boot
-/recovery           emmc      /dev/block/by-name/recovery           flags=display=recovery
-/metadata           ext4      /dev/block/by-name/metadata           flags=display=metadata
-/data               f2fs      /dev/block/by-name/userdata           flags=display=data
-/cache              ext4      /dev/block/by-name/cache              flags=display=cache
-/sdcard             sdfat     /dev/block/mmcblk0p1                  flags=display=sdcard
-/efs                ext4      /dev/block/by-name/sec_efs            flags=display=efs
-/sec_efs            ext4      /dev/block/by-name/sec_efs            flags=display=sec_efs
-/carrier            ext4      /dev/block/by-name/carrier            flags=display=carrier
-/preload            ext4      /dev/block/by-name/hidden             flags=display=preload
-/modem              emmc      /dev/block/by-name/radio              flags=display=modem
-/misc               emmc      /dev/block/by-name/misc               flags=display=misc
-/keydata            ext4      /dev/block/by-name/keydata            flags=display=keydata
-/keyrefuge          f2fs      /dev/block/by-name/keyrefuge          flags=display=keyrefuge
-/dtbo               emmc      /dev/block/by-name/dtbo               flags=display=dtbo
-/prism              ext4      /dev/block/by-name/prism              flags=display=prism
-/optics             ext4      /dev/block/by-name/optics             flags=display=optics
-/vbmeta_system      emmc      /dev/block/by-name/vbmeta_system      flags=display=vbmeta_system
-/vendor_boot        emmc      /dev/block/by-name/vendor_boot        flags=display=vendor_boot
-/vbmeta_samsung     emmc      /dev/block/by-name/vbmeta_samsung     flags=display=vbmeta_samsung
-/system_ext         erofs     system_ext                            flags=display=system_ext;logical
-/vendor_dlkm        erofs     vendor_dlkm                           flags=display=vendor_dlkm;logical
-/system_dlkm        erofs     system_dlkm                           flags=display=system_dlkm;logical
-/system_dlkm        f2fs      system_dlkm                           flags=display=system_dlkm;logical
-/system_dlkm        ext4      system_dlkm                           flags=display=system_dlkm;logical
-/init_boot          emmc      /dev/block/by-name/init_boot          flags=display=init_boot
+# Copyright (c) 2011, Code Aurora Forum. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of Code Aurora Forum, Inc. nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+#<src>                                    <mnt_point>    <type>    <mnt_flags and options>    <fs_mgr_flags>
+system	/system	erofs	ro	avb=vbmeta,logical,first_stage_mount
+system	/system	f2fs	ro	avb=vbmeta,logical,first_stage_mount
+system	/system	ext4	ro	avb=vbmeta,logical,first_stage_mount
+vendor	/vendor	erofs	ro	avb,logical,first_stage_mount
+product	/product	erofs	ro	avb,logical,first_stage_mount
+odm	/odm	erofs	ro	avb,logical,first_stage_mount
+/dev/block/by-name/boot        /boot           emmc        defaults                  recoveryonly
+/dev/block/by-name/recovery    /recovery       emmc        defaults                  recoveryonly
+/dev/block/by-name/metadata	/metadata	ext4	noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic,sync	wait,first_stage_mount,formattable,check
+/dev/block/by-name/userdata	/data	f2fs	noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678	recoveryonly,length=-20480,fscompress
+/dev/block/by-name/cache       /cache          ext4        defaults                  recoveryonly
+/dev/block/mmcblk0p1                                 /sdcard         vfat       defaults                  recoveryonly
+/dev/block/by-name/sec_efs     /efs            ext4        defaults                  recoveryonly
+/dev/block/by-name/sec_efs     /sec_efs        ext4        defaults                  recoveryonly
+#/dev/block/by-name/carrier     /carrier        ext4        defaults                  recoveryonly
+#/dev/block/by-name/hidden      /preload        ext4        defaults                  recoveryonly
+/dev/block/by-name/radio         /modem        emmc     defaults                  recoveryonly
+
+# Add misc for GOTA
+/dev/block/by-name/misc        /misc           emmc        defaults                  recoveryonly
+
+# Samsung ODE
+#/dev/block/by-name/keydata     /keydata        ext4        defaults                  recoveryonly
+#/dev/block/by-name/keyrefuge	/keyrefuge	f2fs	defaults	recoveryonly
+
+#Auto-generated code by FOTA Portal
+/dev/block/by-name/dtbo       /dtbo       emmc        default        recoveryonly
+/dev/block/by-name/prism     /prism        ext4        defaults                  recoveryonly
+/dev/block/by-name/optics     /optics        ext4        defaults                  recoveryonly
+/dev/block/by-name/vbmeta_system	/vbmeta_system	emmc	default	recoveryonly
+/dev/block/by-name/vendor_boot	/vendor_boot	emmc	default	recoveryonly
+/dev/block/by-name/vbmeta_samsung	/vbmeta_samsung	emmc	default	recoveryonly
+#system_ext	/system_ext	erofs	ro	wait,avb=vbmeta,logical,first_stage_mount
+vendor_dlkm	/vendor_dlkm	erofs	ro	wait,avb=vbmeta,logical,first_stage_mount
+system_dlkm	/system_dlkm	erofs	ro	wait,avb,logical,first_stage_mount
+system_dlkm	/system_dlkm	f2fs	ro	wait,avb,logical,first_stage_mount
+system_dlkm	/system_dlkm	ext4	ro	wait,avb,logical,first_stage_mount
+/dev/block/by-name/init_boot	/init_boot	emmc	default	recoveryonly
