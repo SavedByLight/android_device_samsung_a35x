@@ -591,8 +591,11 @@ alias of:N*T*Csamsung,exynos-mfc_plugin exynos_mfc
 alias of:N*T*Csamsung,exynos-mfc_pluginC* exynos_mfc
 alias usb:v04DDp8004d*dc*dsc*dp*ic02isc06ip00in* zaurus
 alias usb:v04DDp8005d*dc*dsc*dp*ic02isc06ip00in* zaurus
+alias usb:v04DDp8005d*dc*dsc*dp*ic02isc0Aip00in* zaurus
 alias usb:v04DDp8006d*dc*dsc*dp*ic02isc06ip00in* zaurus
+alias usb:v04DDp8006d*dc*dsc*dp*ic02isc0Aip00in* zaurus
 alias usb:v04DDp8007d*dc*dsc*dp*ic02isc06ip00in* zaurus
+alias usb:v04DDp8007d*dc*dsc*dp*ic02isc0Aip00in* zaurus
 alias usb:v04DDp9031d*dc*dsc*dp*ic02isc06ip00in* zaurus
 alias usb:v04DDp9031d*dc*dsc*dp*ic02isc0Aip00in* zaurus
 alias usb:v04DDp9032d*dc*dsc*dp*ic02isc06ip00in* zaurus

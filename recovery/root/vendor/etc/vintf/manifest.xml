@@ -10,7 +10,6 @@
         gatekeeper_manifest.xml
         manifest.xml
         manifest.xml
-        manifest.xml
         manifest_gnss_aidl.xml
 -->
 <manifest version="4.0" type="device" target-level="7">
@@ -241,16 +240,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@2.0::ISehDrk/default</fqname>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.samsung.hardware.security.skpm</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISehSkpm</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::ISehSkpm/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.samsung.hardware.sysinput</name>

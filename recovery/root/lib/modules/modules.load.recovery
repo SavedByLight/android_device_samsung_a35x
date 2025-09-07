@@ -207,6 +207,7 @@ nanohub.ko
 exynos_devfreq.ko
 s2mpu15_adc_8835.ko
 npu.ko
+hdm.ko
 sec_pm_debug.ko
 sec_pm_qos_monitor.ko
 sec_wakeup_cpu_allocator.ko
@@ -287,6 +288,4 @@ snd-soc-samsung-slif.ko
 exynos8835_audio.ko
 sec_audio_sysfs.ko
 sec_audio_debug.ko
-tcp_westwood.ko
-tcp_htcp.ko
 cfg80211.ko
