@@ -11,6 +11,8 @@ on init
 # To cut charging battery path
     write /sys/class/power_supply/battery/siop_level 0
     
+# TEEGRIS TUI LL property
+    setprop vendor.TEEGRIS.TUILL true
 
 on late-init
     setprop sys.usb.controller 13200000.dwc3
@@ -22,15 +24,19 @@ on late-init
 on boot
 
 on fs
-    wait /dev/block/platform/13500000.ufs
-    symlink /dev/block/platform/13500000.ufs /dev/block/bootdevice
-    symlink /dev/block/platform/13500000.ufs/by-name /dev/block/by-name
+    wait /dev/block/platform/${ro.boot.boot_devices}
+    symlink /dev/block/platform/${ro.boot.boot_devices} /dev/block/bootdevice
+    symlink /dev/block/platform/${ro.boot.boot_devices}/by-name /dev/block/by-name
 
-    symlink /dev/block/platform/13500000.ufs/by-name/param /dev/block/param
+    symlink /dev/block/platform/${ro.boot.boot_devices}/by-name/param /dev/block/param
     chown root system /dev/block/param
     chmod 0666 /dev/block/param
 
     export ANDROID_ROOT /system_root
+
+on post-fs-data
+    start tz_service
+    start tzts_service
 
 # Set watchdog timer to 30 seconds and fed it every 10 seconds to get a 20 second margin
 service watchdogd /system/bin/watchdogd 10 20
