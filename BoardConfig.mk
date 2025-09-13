@@ -8,7 +8,9 @@
 DEVICE_PATH := device/samsung/a35x
 
 # For building with minimal manifest
+BOARD_VNDK_VERSION := current
 ALLOW_MISSING_DEPENDENCIES := true
+PRODUCT_FULL_TREBLE_OVERRIDE := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 # Architecture
