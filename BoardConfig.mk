@@ -7,9 +7,6 @@
 
 DEVICE_PATH := device/samsung/a35x
 
-# twrp-14.1
-PRODUCT_FULL_TREBLE_OVERRIDE := true
-
 # For building with minimal manifest
 BOARD_VNDK_VERSION := current
 ALLOW_MISSING_DEPENDENCIES := true
