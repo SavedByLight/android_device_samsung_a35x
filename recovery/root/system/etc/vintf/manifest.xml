@@ -22,10 +22,41 @@
         <transport>hwbinder</transport>
         <fqname>@1.0::ISensorManager/default</fqname>
     </hal>
-    <hal format="hidl" max-level="8">
+        <hal format="hidl" optional="true">
+        <name>android.hidl.allocator</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IAllocator</name>
+            <instance>ashmem</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hidl.manager</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IServiceManager</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>android.hidl.memory</name>
-        <transport arch="32+64">passthrough</transport>
-        <fqname>@1.0::IMapper/ashmem</fqname>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IMapper</name>
+            <instance>ashmem</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hidl.token</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ITokenManager</name>
+            <instance>default</instance>
+        </interface>
     </hal>
     <hal format="hidl" max-level="7">
         <name>android.system.net.netd</name>
