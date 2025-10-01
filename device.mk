@@ -23,4 +23,6 @@ PRODUCT_SHIPPING_API_LEVEL := 32
 
 # Keystore2
 PRODUCT_PACKAGES += \
-    android.system.keystore2
+    android.system.keystore2 \
+    keystore2-service \
+    libkeystore2_client
