@@ -40,18 +40,11 @@ service watchdogd /system/bin/watchdogd 10 20
     oneshot
     seclabel u:r:watchdogd:s0
 
-# Keystore 2.0
-service keystore /system/bin/keystore /tmp/misc/keystore
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0
-
-service keystore_auth /system/bin/keystore_auth
-    oneshot
-    user system
-    group root
-    disabled
+service keystore2 /system/bin/keystore2 /data/misc/keystore /tmp/misc/keystore
+    class early_hal
+    user keystore
+    group keystore readproc log
+    interface aidl android.system.keystore2.IKeystoreService
     seclabel u:r:recovery:s0
 
 service extract_ta /vendor/bin/extract_ta.sh
