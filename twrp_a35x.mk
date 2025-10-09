@@ -13,7 +13,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Enable project quotas and casefolding for emulated storage without sdcardfs
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Inherit from a35x device
 $(call inherit-product, device/samsung/a35x/device.mk)
@@ -25,10 +25,10 @@ PRODUCT_MODEL := SM-A356B
 PRODUCT_MANUFACTURER := samsung
 
 
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/samsung/a35x/recovery/root,recovery/root)
+#PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/samsung/a35x/recovery/root,recovery/root)
 
 # Charger
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     charger_res_images
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
