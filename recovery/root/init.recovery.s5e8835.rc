@@ -4,6 +4,13 @@ on early-init
     mkdir /mnt/vendor/efs 0771 radio system
     start extract_ta
 
+on late-init
+    setprop sys.usb.controller 13200000.dwc3
+    setprop ro.debuggable 1
+    setprop service.adb.root 1
+    setprop sys.usb.configfs 1
+    setprop sys.usb.config adb
+
 on fs
     wait /dev/block/platform/${ro.boot.boot_devices}
     symlink /dev/block/platform/${ro.boot.boot_devices} /dev/block/bootdevice
