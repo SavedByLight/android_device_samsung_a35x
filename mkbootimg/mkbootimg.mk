@@ -1,4 +1,3 @@
-#PATCH_AVB:=device/samsung/a35x/mkbootimg/avb_digest_patch.py
 FLASH_IMAGE_TARGET ?= $(PRODUCT_OUT)/recovery.tar
 
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(BOOTIMAGE_EXTRA_DEPS)
