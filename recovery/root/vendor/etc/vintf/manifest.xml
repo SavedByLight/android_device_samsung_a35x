@@ -186,6 +186,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hidl.allocator</name>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IAllocator</name>
@@ -194,6 +195,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hidl.manager</name>
+        <transport>hwbinder</transport>
         <version>1.2</version>
         <interface>
             <name>IServiceManager</name>
@@ -202,6 +204,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hidl.memory</name>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IMapper</name>
@@ -210,6 +213,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hidl.token</name>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>ITokenManager</name>
@@ -218,6 +222,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.samsung.frameworks.security.ucm.crypto</name>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>ISehUcmKeystore</name>
