@@ -1,6 +1,5 @@
 import /init.recovery.teegris.rc
 
-    setprop ro.debuggable 1
 on early-init
     mkdir /mnt/vendor/efs 0771 radio system
     start extract_ta
