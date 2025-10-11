@@ -10,22 +10,10 @@ on fs
     mkdir /dev/socket/iwt/ca 0770 system system
 
 on property:hwservicemanager.ready=true && property:crypto.ready=1
-    start tz_service
     wait_for_prop vendor.tzdaemon Ready
     setprop vendor.TEEGRIS.loaded true
     write /proc/iccc_ready 1
-    start tzts_service
     wait_for_prop vendor.tzts_daemon Ready
-    start vendor.keymint-default
-    start vendor.gatekeeper-1-0
-
-on property:twrp.all.users.decrypted=true
-    stop tz_service
-    stop tzts_service
-    stop vendor.keymint-default
-    stop vendor.gatekeeper-1-0
-    umount /mnt/vendor/efs
-    umount /efs
 
 service tz_service /vendor/bin/tzdaemon
     user system

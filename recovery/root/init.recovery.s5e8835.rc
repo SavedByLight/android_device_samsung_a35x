@@ -24,3 +24,60 @@ service extract_ta /vendor/bin/extract_ta.sh
     disabled
     oneshot
     seclabel u:r:recovery:s0
+
+    on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+    install_keyring
+
+service keystore_auth /system/bin/keystore_auth
+    oneshot
+    user system
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service keystore /system/bin/keystore /tmp/misc/keystore
+    user root
+    group root drmrpc readproc
+    disabled
+    seclabel u:r:recovery:s0
+
+    on property:hwservicemanager.ready=true
+    start vendor.keymint-default
+    start gatekeeper-1-0
+    start vaultkeeper_aidl
+    start vaultkeeper
+    start vaultkeeper_hal
+
+on property:vendor.sys.listeners.registered=true
+    start vendor.keymint-default
+    start gatekeeper-1-0
+    start vaultkeeper_aidl
+    start vaultkeeper
+    start vaultkeeper_hal
+
+on property:twrp.decrypt.done=true
+    stop tz_service
+    stop tzts_service
+    stop vendor.keymint-default
+    stop gatekeeper-1-0
+    stop vaultkeeper_aidl
+    stop vaultkeeper
+    stop vaultkeeper_hal
+
+on property:twrp.all.users.decrypted=true
+    stop tz_service
+    stop tzts_service
+    stop vendor.keymint-default
+    stop gatekeeper-1-0
+    stop vaultkeeper_aidl
+    stop vaultkeeper
+    stop vaultkeeper_hal
+
+on property:ro.crypto.state=unsupported
+    stop tz_service
+    stop tzts_service
+    stop vendor.keymint-default
+    stop gatekeeper-1-0
+    stop vaultkeeper_aidl
+    stop vaultkeeper
+    stop vaultkeeper_hal
