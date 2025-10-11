@@ -1,0 +1,4 @@
+service vaultkeeper_aidl /vendor/bin/vendor.samsung.hardware.security.vaultkeeper-service
+    class early_hal
+    user system
+    group system
