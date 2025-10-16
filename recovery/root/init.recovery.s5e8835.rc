@@ -16,7 +16,7 @@ on fs
     symlink /dev/block/platform/${ro.boot.boot_devices} /dev/block/bootdevice
 
 on boot
-    start health-hal-2-1
+    start vendor.health-samsung
 
 service extract_ta /vendor/bin/extract_ta.sh
     user root
