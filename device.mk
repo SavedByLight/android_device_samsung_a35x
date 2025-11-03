@@ -15,9 +15,6 @@ PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
     fastbootd
 
-# keymint
-TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.security.keymint-remotelyprovisionedcomponent-aidl \
-    android.hardware.security.keymint-aidl \
-    libbinder_ndk \
-    libaidl-ndk
+PRODUCT_PACKAGES += \
+    libskeymint_cli \
+    libbinder
