@@ -3,6 +3,7 @@ import /init.recovery.teegris.rc
 on early-init
     mkdir /mnt/vendor/efs 0771 radio system
     start extract_ta
+    mount_all /system/etc/recovery.fstab
 
 on late-init
     setprop sys.usb.controller 13200000.dwc3
